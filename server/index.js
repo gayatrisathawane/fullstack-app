@@ -56,7 +56,7 @@ app.post('/addproduct', async (req, res) => {
 })
 
 
-//find product on the basis of name 
+//find product on the basis of id
 
 app.get('/product/:_id',async (req,res)=>{
 

@@ -10,6 +10,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import UpdateDetails from './view/UpdateDetails/UpdateDetail';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/addproduct",
     element: <AddProduct/>,
+  },
+  {
+    path: "/updateDetails/:_id",
+    element: <UpdateDetails/>,
   },
   {
     path: "/productdetail/:_id",

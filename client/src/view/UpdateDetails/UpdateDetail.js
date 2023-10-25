@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
-import './AddProduct.css'
+import React, { useState,useEffect } from 'react'
+import './UpdateDetails.css'
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
-const AddProduct = () => {
+const UpdateDetails = () => {
 
     const [name, setName] = useState('');
     const [description, setDesc] = useState('');
@@ -10,34 +11,50 @@ const AddProduct = () => {
     const [brand, setBrand] = useState('');
     const [productImage, setProductImg] = useState('');
 
-    const addDetail = async () => {
+    const { _id } = useParams();
 
-        if (!name || !brand || !price || !description || !productImage) {
-            return alert('all field required')
-        }
-
-        const detailobj = {
-            name,
-            brand,
-            price,
-            description,
-            productImage
-        }
-
-        await axios.post('/addproduct', detailobj)
-
-        setName('')
-        setDesc('')
-        setBrand('')
-        setPrice('')
-        setProductImg('')
-
+    const setfield = async () => {
+        const response = await axios.get(`/product/${_id}`)
+        const { name, description, price, brand, productImage } = response.data.data
+        setName(name)
+        setPrice(price)
+        setDesc(description)
+        setBrand(brand)
+        setProductImg(productImage)
 
     }
 
+    useEffect (()=>{
+        setfield()
+
+    }, [] )
+
+      const updateProduct = async()=>{
+
+        const updateObj = {name,description,price,brand,productImage}
+
+        await axios.put(`/product/${_id}` ,updateObj)
+
+       
+
+       alert("update successfully........!")
+
+       setName('')
+       setBrand('')
+       setDesc('')
+       setProductImg('')
+       setPrice('')
+
+
+      }
+
+
+
+
+
     return (
         <div>
-            <h1 className='text-center fs-1'>Add Product </h1>
+            <h1 className='text-center fs-1'>Update Product </h1>
             <div className='form-container d-block mx-auto'>
                 <form>
                     <input className="form-control input-field"
@@ -69,12 +86,18 @@ const AddProduct = () => {
                     }} />
 
 
-                    <button type="button" 
-                    className='btn btn-primary text-center d-block mx-auto p-2 fs-4' 
-                    onClick={addDetail}>Add detail</button>
+                    <button type="button"
+                        className='btn btn-primary text-center d-block mx-auto p-2 fs-4'
+                        onClick={
+                            updateProduct}
+
+                    > Update Detail</button>
 
                 </form>
+
+
             </div>
+
         </div>
 
 
@@ -83,4 +106,4 @@ const AddProduct = () => {
     )
 }
 
-export default AddProduct
+export default UpdateDetails
