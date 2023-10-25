@@ -4,7 +4,8 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.bundle'
 import Home from './view/Home/Home'
-import AddStudent from './view/AddStudent/AddProduct'
+import AddProduct from './view/AddProduct/AddProduct'
+import ProductDetail from './view/ProductDetail/ProductDetail'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -16,9 +17,13 @@ const router = createBrowserRouter([
     element: <Home/>,
   },
   {
-    path: "/addstudent",
-    element: <AddStudent/>,
+    path: "/addproduct",
+    element: <AddProduct/>,
   },
+  {
+    path: "/productdetail/:_id",
+    element: <ProductDetail/>,
+  }
 ]);
 
 

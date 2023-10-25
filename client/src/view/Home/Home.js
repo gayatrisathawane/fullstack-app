@@ -44,29 +44,25 @@ const Home = () => {
 
     return (
         <div>
-
             <h1 className='heading'>Product Details</h1>
             <div className='productCard'>
                 {
                     details.map((product) => {
-                        const { name, description, price, brand, productImage } = product
+                        const { name, description, price, brand, productImage,_id } = product
                         return (
                             <div className='product-container'>
-
                                 <img src={productImage} alt="productImg" className='productImg' />
-
-
                                 <h2 className='text-center'>{name}</h2>
                                 <p className='text-center'>{description}</p>
                                 <h3 className='text-center text-warning'> ₹ {price}</h3>
                                  <h4 className=''>{brand}</h4>
-                                 
+                                    <button type="button" onClick={()=>{
+                                        window.open(`/productdetail/${_id}`)
+                                    }} className='btn btn-warning'> Click here...</button>
                             </div>
                         )
-                    })
-                }
+                    })}
             </div>
-
         </div>
     )
 }

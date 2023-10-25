@@ -3,12 +3,11 @@ import mongoose  from 'mongoose'
 import dotenv from 'dotenv'
 import Product  from './src/modules/product.js';
 
-
 dotenv.config();
 
 const app = express();
 
-const PORT = 5000
+const PORT = 5000;
 
 app.use(express.json())
 
@@ -17,14 +16,13 @@ const connectMongoDb = async () => {
 
     const conne = await mongoose.connect(process.env.MONGODB_URL)
     if (conne) {
-        console.log("connet mongo Db")
+        console.log("connet MongoDb")
     }
 }
 connectMongoDb()
 
 // schema created
-
-app.get('/products', async (req, res) => {
+app.get('/products', async(req, res) => {
 
     const findProduct = await Product.find()
 
@@ -60,11 +58,11 @@ app.post('/addproduct', async (req, res) => {
 
 //find product on the basis of name 
 
-app.get('/product',async (req,res)=>{
+app.get('/product/:_id',async (req,res)=>{
 
-    const {name} = req.query
+    const { _id } = req.params
 
-    const findOneData = await Product.findOne({name:name})
+    const findOneData = await Product.findOne({_id:_id})
 
     if(findOneData==null)
     {

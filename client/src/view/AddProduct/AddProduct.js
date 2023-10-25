@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import './Addproduct.css'
+import './AddProduct.css'
 import axios from 'axios';
 
-const AddStudent = () => {
+const AddProduct = () => {
 
     const [name, setName] = useState('');
     const [description, setDesc] = useState('');
@@ -12,13 +12,16 @@ const AddStudent = () => {
 
     const addDetail = async () => {
 
-        if(!name || !brand || !price ||! description || !productImage)
-        {
+        if (!name || !brand || !price || !description || !productImage) {
             return alert('all field required')
         }
 
         const detailobj = {
-            name, brand, price, description, productImage
+            name,
+            brand,
+            price,
+            description,
+            productImage
         }
 
         await axios.post('/addproduct', detailobj)
@@ -43,13 +46,15 @@ const AddStudent = () => {
 
                         value={name} onChange={(e) => {
                             setName(e.target.value)
-                        }}
+                        }} />
 
-                    />
-
-                    <input className="form-control input-field" type="text" placeholder=" description" aria-label="default input example" value={description} onChange={(e) => {
-                        setDesc(e.target.value)
-                    }} />
+                    <input className="form-control input-field"
+                        type="text"
+                        placeholder=" description"
+                        aria-label="default input example"
+                        value={description} onChange={(e) => {
+                            setDesc(e.target.value)
+                        }} />
 
                     <input className="form-control input-field" type="text" placeholder="price " aria-label="default input example" value={price} onChange={(e) => {
                         setPrice(e.target.value)
@@ -64,7 +69,9 @@ const AddStudent = () => {
                     }} />
 
 
-                    <button type="button" className='btn btn-primary text-center d-block mx-auto p-2 fs-4' onClick={addDetail}>Add detail</button>
+                    <button type="button" 
+                    className='btn btn-primary text-center d-block mx-auto p-2 fs-4' 
+                    onClick={addDetail}>Add detail</button>
 
                 </form>
 
@@ -79,4 +86,4 @@ const AddStudent = () => {
     )
 }
 
-export default AddStudent
+export default AddProduct
