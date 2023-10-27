@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 import './Home.css'
 
 const Home = () => {
@@ -56,37 +57,47 @@ const Home = () => {
 
 
     return (
-        <div>
-            <h1 className='heading'>Product Details</h1>
+        <div className='main-container'>
+            <h1 className='heading bg-secondary p-3 text-white'>Product HUB </h1>
             <div className='productCard'>
                 {
                     details.map((product) => {
                         const { name, description, price, brand, productImage, _id } = product
                         return (
                             <div className='product-container'>
+                               
                                 <img src={productImage} alt="productImg" className='productImg' />
-                                <h2 className='text-center'>{name}</h2>
-                                <p className='text-center'>{description}</p>
-                                <h3 className='text-center text-warning'> ₹ {price}</h3>
-                                <h4 className=''>{brand}</h4>
-                                <button type="button" onClick={() => {
+
+                                <p className='ps-2 fs-3 fw-bold text-center'>{name}</p>
+                                {/* <span className='fs-3 me-1'>{brand}</span> */}
+                               
+                                {/* <p className='text-center'>{description}</p> */}
+                                <h3 className='ps-2 text-success'> ₹ {price}</h3>
+                               
+                                <p onClick={() => {
                                     window.open(`/productdetail/${_id}`)
-                                }} className='btn btn-warning'> Click here...</button>
+                                }} className='ps-2 fs-4' >View Details</p>
 
 
-                                <button className="btn btn-danger ms-5" onClick={() => {
-
+                                <span  onClick={() => {
                                     deleteProduct(_id)
-                                }}>Delete</button>
+                                }}   className='btn-delete'> ❌</span>
 
-                                <button type="button" onClick={() => {
+                                <span  onClick={() => {
                                     window.open(`/updateDetails/${_id}`)
-                                }} className='btn btn-warning'>Edit</button>
+                                }} className='editproduct'>✍</span>
+
+                                <button className='btn btn-warning btn-buy-now '>Buy now</button>
+                                <button className='btn btn-addtocart mt-2'> 🛒 Add to cart</button>
 
                             </div>
                         )
                     })}
             </div>
+          
+            <Link to="/addproduct"><button className='addproduct-btn'> 🛒 Add Product</button></Link>
+          
+           
         </div>
     )
 }

@@ -23,11 +23,30 @@ const ProductDetail = () => {
        <div>
         <h1 className='text-center'>ProductDetail</h1>
      <div className='productDetail-Container'>
-        <img src={product.productImage} alt="productImg" className='product-img'/>
-        <h1>{product?.name}</h1>
+
+      <div className='d-flex'>
+      <div className='p-2'>
+        
+      <img src={product.productImage} alt="productImg" className='product-img'/>
+
+      <div className='d-flex '>
+      <button className='btn btn-warning btn-buy-now '> Buy Now</button>
+      <button  className='btn btn-addtocart mt-2'>Add to cart </button>
+      </div>
+
+      </div>
+
+      <div>
+        <p className='fs-1'>{product?.name}</p>
+        <h2>{product?.description}</h2>
         <h2>{product?.price}</h2>
         <h2>{product?.brand}</h2>
-        <h2>{product?.description}</h2>
+       
+      </div>
+
+      </div>
+      
+        
      </div>
       
     </div>

@@ -21,14 +21,14 @@ const connectMongoDb = async () => {
 }
 connectMongoDb()
 
-// schema created
+
 app.get('/products', async(req, res) => {
 
     const findProduct = await Product.find()
 
     res.json({
         data: findProduct,
-        message: "succesfully get data"
+        message: "succesfully get data     "
     })
 })
 

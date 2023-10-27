@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import './UpdateDetails.css'
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams,Link } from 'react-router-dom';
 
 const UpdateDetails = () => {
 
@@ -47,14 +47,10 @@ const UpdateDetails = () => {
 
 
       }
-
-
-
-
-
     return (
+        <>
         <div>
-            <h1 className='text-center fs-1'>Update Product </h1>
+            <h1 className='text-center fs-1 bg-secondary p-3  text-white'>Update Product </h1>
             <div className='form-container d-block mx-auto'>
                 <form>
                     <input className="form-control input-field"
@@ -87,19 +83,21 @@ const UpdateDetails = () => {
 
 
                     <button type="button"
-                        className='btn btn-primary text-center d-block mx-auto p-2 fs-4'
-                        onClick={
-                            updateProduct}
-
-                    > Update Detail</button>
+                        className='btn btn-secondary text-center d-block mx-auto p-2 fs-4'
+                        onClick={updateProduct}> Update Detail</button>
 
                 </form>
 
+               </div>
 
-            </div>
-
+            
+            
         </div>
 
+        <Link to="/"><button className='addproduct-btn'>Go to Home Page</button></Link>
+
+
+</>
 
 
 

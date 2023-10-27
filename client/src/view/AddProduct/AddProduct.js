@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './AddProduct.css'
 import axios from 'axios';
+import { Link } from 'react-router-dom'
 
 const AddProduct = () => {
 
@@ -24,7 +25,9 @@ const AddProduct = () => {
             productImage
         }
 
-        await axios.post('/addproduct', detailobj)
+         const response= await axios.post('/addproduct', detailobj)
+
+         console.log(response?.data?.data)
 
         setName('')
         setDesc('')
@@ -70,11 +73,14 @@ const AddProduct = () => {
 
 
                     <button type="button" 
-                    className='btn btn-primary text-center d-block mx-auto p-2 fs-4' 
+                    className='btn btn-secondary text-center d-block mx-auto p-2 fs-4' 
                     onClick={addDetail}>Add detail</button>
 
                 </form>
             </div>
+
+           <Link to="/"><button className='addproduct-btn'>Go to Home Page</button></Link>
+          
         </div>
 
 
